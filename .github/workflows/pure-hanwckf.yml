@@ -1,4 +1,4 @@
-name: pure-hanwckf-ax6000
+name: hanwckf-redmi-ax6000
 
 on:
   repository_dispatch:
@@ -81,7 +81,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s || (curl -k -d "title=OpenWrt-AX6000固件编译失败" -d "content=编译固件版本：${{ env.FIRMWARE_VERSION }}%0A编译开始时间：${{ env.START_DATE }}%0A编译结束时间：$(date +'%Y年%m月%d日 %H点%M分%S秒')" -d "token=${{ env.PUSHPLUS_TOKEN }}&channel=cp&webhook=server" "http://www.pushplus.plus/send")
+        make -j$(nproc) || make -j1 || make -j1 V=s || (curl -k -d "title=OpenWrt-RedMi-AX6000固件编译失败" -d "content=编译固件版本：${{ env.FIRMWARE_VERSION }}%0A编译开始时间：${{ env.START_DATE }}%0A编译结束时间：$(date +'%Y年%m月%d日 %H点%M分%S秒')" -d "token=${{ env.PUSHPLUS_TOKEN }}&channel=cp&webhook=server" "http://www.pushplus.plus/send")
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 整理固件
@@ -106,7 +106,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FIRMWARE_VERSION }}-OpenWrt-AX6000
+        name: ${{ env.FIRMWARE_VERSION }}-OpenWrt-RedMi-AX6000
         path: ${{ env.FIRMWARE }}
         
     - name: 创建release标签
