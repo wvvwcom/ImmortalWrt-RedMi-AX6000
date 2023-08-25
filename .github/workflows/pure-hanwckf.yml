@@ -1,4 +1,4 @@
-name: hanwckf-redmi-ax6000
+name: pure-hanwckf-redmi-ax6000
 
 on:
   repository_dispatch:
