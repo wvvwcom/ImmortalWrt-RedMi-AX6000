@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       clean:
-         description: 'clean ccache'
+        description: 'clean ccache'
         required: false
-         default: 'false'
+        default: 'false'
       ssh:
         description: 'SSH connection to Actions'
         required: false
