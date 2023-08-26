@@ -1,4 +1,4 @@
-name: pure-hanwckf-redmi-ax6000
+name: build-hanwckf-redmi-ax6000
 
 on:
   repository_dispatch:
@@ -12,7 +12,7 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: pure.config
+  CONFIG_FILE: ax6000_hanwckf.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_FIRMWARE: true
@@ -62,7 +62,8 @@ jobs:
     - name: 加载自定义配置
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cp openwrt/defconfig/mt7986-ax6000.config openwrt/.config
+        [ -e $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -90,7 +91,6 @@ jobs:
       run: |
         # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间
         cd openwrt/bin/targets/*/*
-        rm -rf packages
         rm -rf version.buildinfo
         rm -rf profiles.json
         rm -rf *rootfs*
