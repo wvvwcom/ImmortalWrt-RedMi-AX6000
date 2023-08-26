@@ -100,7 +100,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OpenWrt_bin-RedMi-AX6000-${{ env.FIRMWARE_VERSION }}
         path: openwrt/bin
 
     - name: 整理固件
@@ -125,7 +125,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FIRMWARE_VERSION }}-OpenWrt-RedMi-AX6000
+        name: OpenWrt-RedMi-AX6000-${{ env.FIRMWARE_VERSION }}
         path: ${{ env.FIRMWARE }}
         
     - name: 创建release标签
