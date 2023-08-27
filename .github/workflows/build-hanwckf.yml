@@ -21,7 +21,7 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: false
-  UPLOAD_FIRMWARE: false
+  UPLOAD_FIRMWARE: true
   UPLOAD_BIN_DIR: true
   UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
@@ -116,8 +116,10 @@ jobs:
         rm -rf *kernel*
         rm -rf *.manifest
         rm -rf sha256sums
-        mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-sysupgrade.bin
-        mv *factory.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-factory.bin
+        rm -rf *stock*
+        rm -rf *factory*
+        #mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-sysupgrade.bin
+        #mv *factory.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-factory.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
         
