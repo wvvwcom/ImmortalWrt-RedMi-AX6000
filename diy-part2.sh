@@ -10,7 +10,7 @@
 ### 
 
 # 删除多余的主题
-sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
+# sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
 sed -i '/CONFIG_PACKAGE_luci-theme-bootstrap-mod=y/d' .config
 
 # 自定义默认网关，后方的192.168.10.1即是可自定义的部分
