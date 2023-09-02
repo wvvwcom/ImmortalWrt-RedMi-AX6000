@@ -9,6 +9,11 @@
  # 开源让世界美好
 ### 
 
+# 更新指定软件包
+./scripts/feeds uninstall alist luci-app-alist
+./scripts/feeds install -p nuexini alist luci-app-alist
+
+
 # 删除多余的主题
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
 sed -i '/CONFIG_PACKAGE_luci-theme-bootstrap-mod=y/d' .config
