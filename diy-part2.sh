@@ -10,8 +10,8 @@
 ### 
 
 # 更新指定软件包
- ./scripts/feeds uninstall alist luci-app-alist frp luci-app-frpc luci-app-vlmcsd
- ./scripts/feeds install -p kiddin9 alist luci-app-alist frp luci-app-frpc luci-app-vlmcsd
+ ./scripts/feeds uninstall alist luci-app-alist luci-app-vlmcsd
+ ./scripts/feeds install -p nuexini alist luci-app-alist luci-app-vlmcsd
 
 # 删除多余的主题
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
