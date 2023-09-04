@@ -10,9 +10,14 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
+mkdir -p package/wvvwcom
+svn co https://github.com/NueXini/NueXini_Packages/trunk/alist package/wvvwcom/alist
+svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-alist package/wvvwcom/luci-app-alist
+svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd package/wvvwcom/luci-app-vlmcsd
+
 ### 添加第三方订阅源（这边建议编译后去更改成中科大的源）
 # sed -i '$a src-git-full small https://github.com/kenzok8/small-package' feeds.conf.default
 # git clone https://github.com/CHN-beta/rkp-ipid package/rkp-ipid
 
-sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
+# sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
 # sed -i '$a src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git' feeds.conf.default
