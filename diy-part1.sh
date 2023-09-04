@@ -19,5 +19,5 @@ svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd package
 # sed -i '$a src-git-full small https://github.com/kenzok8/small-package' feeds.conf.default
 # git clone https://github.com/CHN-beta/rkp-ipid package/rkp-ipid
 
-# sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
+sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
 # sed -i '$a src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git' feeds.conf.default
