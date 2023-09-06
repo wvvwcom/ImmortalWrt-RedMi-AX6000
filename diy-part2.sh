@@ -14,8 +14,8 @@
 # ./scripts/feeds install -p nuexini alist luci-app-alist luci-app-vlmcsd
 
 # 更新golang版本，alist编译要求20.x
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
 
 # 删除多余的主题
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
