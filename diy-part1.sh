@@ -10,12 +10,12 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-mkdir -p package/wvvwcom
-svn co https://github.com/NueXini/NueXini_Packages/trunk/alist package/wvvwcom/alist
-svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-alist package/wvvwcom/luci-app-alist
-svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd package/wvvwcom/luci-app-vlmcsd
-svn co https://github.com/kiddin9/openwrt-packages/trunk/frp package/wvvwcom/frp
-svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-frpc package/wvvwcom/luci-app-frpc
+# mkdir -p package/wvvwcom
+# svn co https://github.com/NueXini/NueXini_Packages/trunk/alist package/wvvwcom/alist
+# svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-alist package/wvvwcom/luci-app-alist
+# svn co https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd package/wvvwcom/luci-app-vlmcsd
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/frp package/wvvwcom/frp
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-frpc package/wvvwcom/luci-app-frpc
 
 
 ### 添加第三方订阅源（这边建议编译后去更改成中科大的源）
