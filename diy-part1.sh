@@ -24,5 +24,9 @@
 
 ### 直接添加helloworld源会报错，暂时屏蔽 
 # sed -i '1i\src-git helloworld https://github.com/fw876/helloworld.git;main' feeds.conf.default
-sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
+# sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
 # sed -i '$a src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git' feeds.conf.default
+
+# ilxp/luci-app-ikoolproxy
+rm -rf package/luci-app-ikoolproxy
+git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
