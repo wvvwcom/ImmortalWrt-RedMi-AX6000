@@ -30,3 +30,12 @@
 # ilxp/luci-app-ikoolproxy
 rm -rf package/luci-app-ikoolproxy
 git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+
+# fw876/helloworld
+rm -rf package/feeds/luci/luci-app-ssr-plus
+svn co https://github.com/fw876/helloworld/branches/main/luci-app-ssr-plus package/feeds/luci/luci-app-ssr-plus
+rm -rf package/feeds/packages/xray-core
+svn co https://github.com/fw876/helloworld/branches/main/xray-core package/feeds/packages/xray-core
+rm -rf package/feeds/packages/xray-plugin
+svn co https://github.com/fw876/helloworld/branches/main/xray-plugin package/feeds/packages/xray-plugin
+
