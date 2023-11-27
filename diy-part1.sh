@@ -34,6 +34,8 @@ git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikool
 # fw876/helloworld
 rm -rf package/feeds/luci/luci-app-ssr-plus
 svn co https://github.com/fw876/helloworld/branches/main/luci-app-ssr-plus package/feeds/luci/luci-app-ssr-plus
+rm -rf package/feeds/packages/shadow-tls
+svn co https://github.com/fw876/helloworld/branches/main/shadow-tls package/feeds/packages/shadow-tls
 rm -rf package/feeds/packages/xray-core
 svn co https://github.com/fw876/helloworld/branches/main/xray-core package/feeds/packages/xray-core
 rm -rf package/feeds/packages/xray-plugin
