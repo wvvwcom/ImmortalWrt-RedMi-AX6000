@@ -25,3 +25,36 @@ sed -i '/CONFIG_PACKAGE_luci-theme-bootstrap-mod=y/d' .config
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 # 固件版本名称自定义
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
+
+# ilxp/luci-app-ikoolproxy
+rm -rf package/luci-app-ikoolproxy
+git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+
+
+# fw876/helloworld
+git clone https://github.com/fw876/helloworld.git package/feeds/helloworld
+rm -rf package/feeds/luci/luci-app-ssr-plus
+rm -rf package/feeds/packages/chinadns-ng
+rm -rf package/feeds/packages/dns2socks
+rm -rf package/feeds/packages/dns2tcp
+rm -rf package/feeds/packages/gn
+rm -rf package/feeds/packages/hysteria
+rm -rf package/feeds/packages/ipt2socks
+rm -rf package/feeds/packages/lua-neturl
+rm -rf package/feeds/packages/microsocks
+rm -rf package/feeds/packages/mosdns
+rm -rf package/feeds/packages/naiveproxy
+rm -rf package/feeds/packages/redsocks2
+rm -rf package/feeds/packages/shadowsocksr-libev
+rm -rf package/feeds/packages/shadowsocks-rust
+rm -rf package/feeds/packages/shadow-tls
+rm -rf package/feeds/packages/simple-obfs
+rm -rf package/feeds/packages/tcping
+rm -rf package/feeds/packages/trojan
+rm -rf package/feeds/packages/tuic-client
+rm -rf package/feeds/packages/v2raya
+rm -rf package/feeds/packages/v2ray-core
+rm -rf package/feeds/packages/v2ray-geodata
+rm -rf package/feeds/packages/v2ray-plugin
+rm -rf package/feeds/packages/xray-core
+rm -rf package/feeds/packages/xray-plugin

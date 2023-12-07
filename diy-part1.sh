@@ -27,17 +27,5 @@
 # sed -i '$a src-git nuexini https://github.com/NueXini/NueXini_Packages' feeds.conf.default
 # sed -i '$a src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git' feeds.conf.default
 
-# ilxp/luci-app-ikoolproxy
-rm -rf package/luci-app-ikoolproxy
-git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
-# fw876/helloworld
-rm -rf package/feeds/luci/luci-app-ssr-plus
-svn co https://github.com/fw876/helloworld/branches/main/luci-app-ssr-plus package/feeds/luci/luci-app-ssr-plus
-rm -rf package/feeds/packages/shadow-tls
-svn co https://github.com/fw876/helloworld/branches/main/shadow-tls package/feeds/packages/shadow-tls
-rm -rf package/feeds/packages/xray-core
-svn co https://github.com/fw876/helloworld/branches/main/xray-core package/feeds/packages/xray-core
-rm -rf package/feeds/packages/xray-plugin
-svn co https://github.com/fw876/helloworld/branches/main/xray-plugin package/feeds/packages/xray-plugin
 
