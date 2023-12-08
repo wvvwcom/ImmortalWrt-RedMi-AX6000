@@ -28,16 +28,16 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 
 # 更新golang版本，alist xray 编译要求20.x
 rm -rf feeds/packages/lang/golang
-svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/lang/golang
+svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
 
 
 # 更新frpc，golang版本更新后，旧版本编译报错，需要放在feeds/packages/net/frp路径下，makefile有相对路径依赖golang
 rm -rf feeds/packages/net/frp
-svn co https://github.com/immortalwrt/packages/trunk/net/frp feeds/packages/net/frp
+svn co https://github.com/coolsnowwolf/packages/trunk/net/frp feeds/packages/net/frp
 rm -rf feeds/luci/applications/luci-app-frpc
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
+svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
 rm -rf feeds/luci/applications/luci-app-frps
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frps feeds/luci/applications/luci-app-frps
+svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frps feeds/luci/applications/luci-app-frps
 
 
 # fw876/helloworld，使用主分支， main分支针对openwrt23版本
