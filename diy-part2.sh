@@ -15,9 +15,11 @@
 
 
 
-# 删除多余的主题
+# 删除多余的主题和软件包
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
-sed -i '/CONFIG_PACKAGE_luci-theme-bootstrap-mod=y/d' .config
+sed -i '/.*luci-theme-bootstrap-mod.*/d' .config
+sed -i '/.*luci-app-ssr-plus.*/d' .config
+sed -i '/.*luci-app-passwall.*/d' .config
 
 # 自定义默认网关，后方的192.168.10.1即是可自定义的部分
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -26,7 +28,7 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 
 # 更新golang版本，alist xray 编译要求20.x
 rm -rf feeds/packages/lang/golang
-git clone -b 20.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/lang/golang
 
 # ilxp/luci-app-ikoolproxy
 rm -rf package/luci-app-ikoolproxy
