@@ -70,10 +70,10 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         cp openwrt/defconfig/mt7986-ax6000.config openwrt/.config
-        [ -e $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        [ -e $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/.config
         
     - name: 下载包
       id: package
