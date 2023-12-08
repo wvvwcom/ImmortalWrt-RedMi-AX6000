@@ -30,17 +30,14 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 rm -rf feeds/packages/lang/golang
 svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/lang/golang
 
-# ilxp/luci-app-ikoolproxy
-rm -rf package/luci-app-ikoolproxy
-git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
-# 更新frpc，golang版本更新后，旧版本编译报错
-rm -rf package/feeds/packages/frp
-svn co https://github.com/immortalwrt/packages/trunk/net/frp package/feeds/packages/frp
-rm -rf package/feeds/luci/luci-app-frpc
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frpc package/feeds/luci/luci-app-frpc
-rm -rf package/feeds/luci/luci-app-frps
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frps package/feeds/luci/luci-app-frps
+# 更新frpc，golang版本更新后，旧版本编译报错，需要放在feeds/packages/net/frp路径下，makefile有相对路径依赖golang
+rm -rf feeds/packages/net/frp
+svn co https://github.com/immortalwrt/packages/trunk/net/frp feeds/packages/net/frp
+rm -rf feeds/luci/applications/luci-app-frpc
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
+rm -rf feeds/luci/applications/luci-app-frps
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frps feeds/luci/applications/luci-app-frps
 
 
 # fw876/helloworld，使用主分支， main分支针对openwrt23版本
@@ -71,3 +68,7 @@ rm -rf package/feeds/packages/v2ray-geodata
 rm -rf package/feeds/packages/v2ray-plugin
 rm -rf package/feeds/packages/xray-core
 rm -rf package/feeds/packages/xray-plugin
+
+# ilxp/luci-app-ikoolproxy，路径放在helloworld同目录
+rm -rf package/feeds/helloworld/luci-app-ikoolproxy
+git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/feeds/helloworld/luci-app-ikoolproxy
