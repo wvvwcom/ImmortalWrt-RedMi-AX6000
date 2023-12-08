@@ -13,9 +13,7 @@
 # ./scripts/feeds uninstall alist luci-app-alist luci-app-vlmcsd
 # ./scripts/feeds install -p nuexini alist luci-app-alist luci-app-vlmcsd
 
-# 更新golang版本，alist编译要求20.x
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+
 
 # 删除多余的主题
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
@@ -26,13 +24,16 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 # 固件版本名称自定义
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
 
+# 更新golang版本，alist xray 编译要求20.x
+rm -rf feeds/packages/lang/golang
+git clone -b 20.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+
 # ilxp/luci-app-ikoolproxy
 rm -rf package/luci-app-ikoolproxy
 git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
-
 # fw876/helloworld
-git clone https://github.com/fw876/helloworld.git package/feeds/helloworld
+git clone -b main https://github.com/fw876/helloworld.git package/feeds/helloworld
 rm -rf package/feeds/luci/luci-app-ssr-plus
 rm -rf package/feeds/packages/chinadns-ng
 rm -rf package/feeds/packages/dns2socks
