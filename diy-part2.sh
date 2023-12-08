@@ -44,7 +44,7 @@ svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frps pack
 
 
 # fw876/helloworld，使用主分支， main分支针对openwrt23版本
-git clone https://github.com/fw876/helloworld.git package/feeds/helloworld
+git clone https://github.com/fw876/helloworld.git package/helloworld
 rm -rf package/feeds/luci/luci-app-ssr-plus
 rm -rf package/feeds/packages/chinadns-ng
 rm -rf package/feeds/packages/dns2socks
