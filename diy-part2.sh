@@ -34,8 +34,17 @@ svn co https://github.com/immortalwrt/packages/trunk/lang/golang feeds/packages/
 rm -rf package/luci-app-ikoolproxy
 git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 
-# fw876/helloworld
-git clone -b main https://github.com/fw876/helloworld.git package/feeds/helloworld
+# 更新frpc，golang版本更新后，旧版本编译报错
+rm -rf package/feeds/packages/frp
+svn co https://github.com/immortalwrt/packages/trunk/net/frp package/feeds/packages/frp
+rm -rf package/feeds/luci/luci-app-frpc
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frpc package/feeds/luci/luci-app-frpc
+rm -rf package/feeds/luci/luci-app-frps
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-frps package/feeds/luci/luci-app-frps
+
+
+# fw876/helloworld，使用主分支， main分支针对openwrt23版本
+git clone https://github.com/fw876/helloworld.git package/feeds/helloworld
 rm -rf package/feeds/luci/luci-app-ssr-plus
 rm -rf package/feeds/packages/chinadns-ng
 rm -rf package/feeds/packages/dns2socks
