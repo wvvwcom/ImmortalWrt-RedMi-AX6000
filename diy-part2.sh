@@ -15,11 +15,11 @@
 
 
 
-# 删除多余的主题和软件包
+# 删除多余的主题和软件包，直接在ax6000_hanwckf.config里面配置
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
-sed -i '/.*luci-theme-bootstrap-mod.*/d' .config
-sed -i '/.*luci-app-ssr-plus.*/d' .config
-sed -i '/.*luci-app-passwall.*/d' .config
+# sed -i '/.*luci-theme-bootstrap-mod.*/d' .config
+# sed -i '/.*luci-app-ssr-plus.*/d' .config
+# sed -i '/.*luci-app-passwall.*/d' .config
 
 # 自定义默认网关，后方的192.168.10.1即是可自定义的部分
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
