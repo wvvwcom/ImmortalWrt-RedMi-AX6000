@@ -30,11 +30,6 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 rm -rf feeds/packages/lang/golang
 svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
 
-rm -rf packages/feeds/packages/ucl
-svn co https://github.com/coolsnowwolf/packages/trunk/lean/ucl packages/feeds/packages
-rm -rf packages/feeds/packages/upx
-svn co https://github.com/coolsnowwolf/packages/trunk/lean/upx packages/feeds/packages
-
 # 更新frpc，golang版本更新后，旧版本编译报错，需要放在feeds/packages/net/frp路径下，makefile有相对路径依赖golang
 rm -rf feeds/packages/net/frp
 svn co https://github.com/coolsnowwolf/packages/trunk/net/frp feeds/packages/net/frp
