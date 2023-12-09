@@ -26,10 +26,14 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 # 固件版本名称自定义
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
 
-# 更新golang版本，alist xray 编译要求20.x
+# 更新golang版本，修改为主线版本，alist xray 编译要求21.x
 rm -rf feeds/packages/lang/golang
 svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
 
+rm -rf packages/feeds/packages/ucl
+svn co https://github.com/coolsnowwolf/packages/trunk/lean/ucl packages/feeds/packages
+rm -rf packages/feeds/packages/upx
+svn co https://github.com/coolsnowwolf/packages/trunk/lean/upx packages/feeds/packages
 
 # 更新frpc，golang版本更新后，旧版本编译报错，需要放在feeds/packages/net/frp路径下，makefile有相对路径依赖golang
 rm -rf feeds/packages/net/frp
@@ -39,6 +43,15 @@ svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc fee
 rm -rf feeds/luci/applications/luci-app-frps
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frps feeds/luci/applications/luci-app-frps
 
+# 中文包的命名ImmortalWrt和Lede不一样，修改适配
+mv feeds/luci/applications/luci-app-frpc/po/zh-cn feeds/luci/applications/luci-app-frpc/po/zh_Hans
+mv feeds/luci/applications/luci-app-frps/po/zh-cn feeds/luci/applications/luci-app-frps/po/zh_Hans
+
+# frp新版本依赖，会报警，编译不会报错
+rm -rf package/feeds/packages/ucl
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ucl package/feeds/packages/ucl
+rm -rf package/feeds/packages/upx
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/upx package/feeds/packages/upx
 
 # fw876/helloworld，使用主分支， main分支针对openwrt23版本
 rm -rf package/feeds/helloworld
