@@ -9,6 +9,32 @@
  # 开源让世界美好
 ### 
 
+
+function merge_package() {
+    # 参数1是分支名,参数2是库地址,参数3是所有文件下载到指定路径。
+    # 同一个仓库下载多个文件夹直接在后面跟文件名或路径，空格分开。
+    if [[ $# -lt 3 ]]; then
+        echo "Syntax error: [$#] [$*]" >&2
+        return 1
+    fi
+    trap 'rm -rf "$tmpdir"' EXIT
+    branch="$1" curl="$2" target_dir="$3" && shift 3
+    rootdir="$PWD"
+    localdir="$target_dir"
+    [ -d "$localdir" ] || mkdir -p "$localdir"
+    tmpdir="$(mktemp -d)" || exit 1
+    git clone -b "$branch" --depth 1 --filter=blob:none --sparse "$curl" "$tmpdir"
+    cd "$tmpdir"
+    git sparse-checkout init --cone
+    git sparse-checkout set "$@"
+    # 使用循环逐个移动文件夹
+    for folder in "$@"; do
+        rm -rf  "$rootdir/$localdir/${folder##*/}"
+        mv -f   "$folder" "$rootdir/$localdir"
+    done
+    cd "$rootdir"
+}
+
 # 更新指定软件包
 # ./scripts/feeds uninstall alist luci-app-alist luci-app-vlmcsd
 # ./scripts/feeds install -p nuexini alist luci-app-alist luci-app-vlmcsd
@@ -23,6 +49,23 @@
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 # 固件版本名称自定义
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
+
+# 更新golang版本，修改为主线版本，alist xray 编译要求21.x
+merge_package master https://github.com/coolsnowwolf/packages   feeds/packages/lang       lang/golang
+merge_package master https://github.com/coolsnowwolf/packages   feeds/packages/net        net/frp
+merge_package master https://github.com/coolsnowwolf/luci       feeds/luci/applications   applications/luci-app-frpc
+merge_package master https://github.com/coolsnowwolf/luci       feeds/luci/applications   applications/luci-app-frps
+
+
+# 中文包的命名ImmortalWrt和Lede不一样，修改适配
+mv feeds/luci/applications/luci-app-frpc/po/zh-cn feeds/luci/applications/luci-app-frpc/po/zh_Hans
+mv feeds/luci/applications/luci-app-frps/po/zh-cn feeds/luci/applications/luci-app-frps/po/zh_Hans
+
+# frp新版本依赖，会报警，编译不会报错
+merge_package master https://github.com/coolsnowwolf/lede  package/feeds/packages package/lean/ucl
+merge_package master https://github.com/coolsnowwolf/lede  package/feeds/packages package/lean/upx
+
+<<'COMMENT'
 
 # 更新golang版本，修改为主线版本，alist xray 编译要求21.x
 rm -rf feeds/packages/lang/golang
@@ -45,6 +88,8 @@ rm -rf package/feeds/packages/ucl
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ucl package/feeds/packages/ucl
 rm -rf package/feeds/packages/upx
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/upx package/feeds/packages/upx
+
+COMMENT
 
 # fw876/helloworld，使用主分支， main分支针对openwrt23版本
 rm -rf package/feeds/helloworld
