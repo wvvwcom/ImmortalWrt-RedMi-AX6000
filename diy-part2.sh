@@ -13,8 +13,6 @@
 # ./scripts/feeds uninstall alist luci-app-alist luci-app-vlmcsd
 # ./scripts/feeds install -p nuexini alist luci-app-alist luci-app-vlmcsd
 
-
-
 # 删除多余的主题和软件包，直接在ax6000_hanwckf.config里面配置
 # sed -i '/CONFIG_PACKAGE_luci-theme-argon=y/d' .config
 # sed -i '/.*luci-theme-bootstrap-mod.*/d' .config
@@ -26,7 +24,6 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 # 固件版本名称自定义
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
 
-<<'COMMENT'
 # 更新golang版本，修改为主线版本，alist xray 编译要求21.x
 rm -rf feeds/packages/lang/golang
 svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
@@ -77,8 +74,7 @@ rm -rf package/feeds/packages/v2ray-geodata
 rm -rf package/feeds/packages/v2ray-plugin
 rm -rf package/feeds/packages/xray-core
 rm -rf package/feeds/packages/xray-plugin
-COMMENT
 
 # ilxp/luci-app-ikoolproxy，路径放在helloworld同目录
-rm -rf package/feeds/luci-app-ikoolproxy
-git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/feeds/luci-app-ikoolproxy
+rm -rf package/feeds/helloworld/luci-app-ikoolproxy
+git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/feeds/helloworld/luci-app-ikoolproxy
