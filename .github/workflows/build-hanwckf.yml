@@ -121,6 +121,8 @@ jobs:
         rm -rf *tplink*
         rm -rf *stock*
         rm -rf *factory*
+        rm -rf *ruijie*
+        rm -rf *jdcloud*
         #mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-sysupgrade.bin
         #mv *factory.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-factory.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
