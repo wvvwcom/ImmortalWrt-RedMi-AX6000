@@ -120,6 +120,9 @@ rm -rf package/feeds/packages/v2ray-plugin
 rm -rf package/feeds/packages/xray-core
 rm -rf package/feeds/packages/xray-plugin
 
+#  解决编译时报缺少libopenssl-legacy https://github.com/fw876/helloworld/issues/1351
+sed -i 's/ +libopenssl-legacy//g' package/feeds/helloworld/shadowsocksr-libev/Makefile
+
 # ilxp/luci-app-ikoolproxy，路径放在helloworld同目录
 rm -rf package/feeds/helloworld/luci-app-ikoolproxy
 git clone https://github.com/ilxp/luci-app-ikoolproxy.git package/feeds/helloworld/luci-app-ikoolproxy
