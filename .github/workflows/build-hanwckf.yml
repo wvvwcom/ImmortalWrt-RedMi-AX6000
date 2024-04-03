@@ -110,20 +110,13 @@ jobs:
       run: |
         # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间
         cd openwrt/bin/targets/*/*
-        rm -rf packages
-        rm -rf version.buildinfo
-        rm -rf profiles.json
-        rm -rf *rootfs*
-        rm -rf *kernel*
-        rm -rf *.manifest
-        rm -rf sha256sums
-        rm -rf *.buildinfo
         rm -rf *glinet*
+        rm -rf *jdcloud*
+        rm -rf *ruijie*
         rm -rf *tplink*
         rm -rf *stock*
-        rm -rf *factory*
-        rm -rf *ruijie*
-        rm -rf *jdcloud*
+        rm -rf *initramfs-kernel*
+        rm -rf *squashfs-factory*
         #mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-sysupgrade.bin
         #mv *factory.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-RedMi-AX6000-factory.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
@@ -134,7 +127,8 @@ jobs:
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt-RedMi-AX6000-${{ env.FIRMWARE_VERSION }}
-        path: ${{ env.FIRMWARE }}
+        path: openwrt/bin/targets
+        #path: ${{ env.FIRMWARE }}
         
     - name: 创建release标签
       id: tag
