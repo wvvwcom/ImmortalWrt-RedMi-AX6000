@@ -51,7 +51,13 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 # sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='ImmortalWrt By IraXu $(date +"%Y%m%d") '/g" package/base-files/files/etc/openwrt_release
 
 # 更新golang版本，修改为主线版本，alist xray 编译要求21.x
-merge_package master https://github.com/coolsnowwolf/packages   feeds/packages/lang       lang/golang
+merge_package master https://github.com/coolsnowwolf/packages           feeds/packages/lang       lang/golang
+merge_package main https://github.com/wvvwcom/openwrt-package-frpc    feeds/packages/net        net/frp
+merge_package main https://github.com/wvvwcom/openwrt-package-frpc    feeds/luci/applications   applications/luci-app-frpc
+
+<<'COMMENT'
+
+# 以下为更新lede最新版本的frp，但是v2ex为旧版本，暂时屏蔽
 merge_package master https://github.com/coolsnowwolf/packages   feeds/packages/net        net/frp
 merge_package master https://github.com/coolsnowwolf/luci       feeds/luci/applications   applications/luci-app-frpc
 merge_package master https://github.com/coolsnowwolf/luci       feeds/luci/applications   applications/luci-app-frps
@@ -64,8 +70,6 @@ mv feeds/luci/applications/luci-app-frps/po/zh-cn feeds/luci/applications/luci-a
 # frp新版本依赖，会报警，编译不会报错
 merge_package master https://github.com/coolsnowwolf/lede  package/feeds/packages package/lean/ucl
 merge_package master https://github.com/coolsnowwolf/lede  package/feeds/packages package/lean/upx
-
-<<'COMMENT'
 
 # 更新golang版本，修改为主线版本，alist xray 编译要求21.x
 rm -rf feeds/packages/lang/golang
